@@ -1,0 +1,144 @@
+<html>
+
+<head>
+    <title>MapmyIndia Polygon - Text on Polygon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="desciption" content="Mapmyindia Polygon Text">
+    <script src="https://apis.mapmyindia.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=2.0&callback=initMap1" defer async></script>
+    <link rel="icon" href="http://www.mapmyindia.com/images/favicon.ico" type="image/x-icon">
+    <style>
+        #map {
+            width: 100%;
+            height: 60vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map;
+
+        function initMap1() {
+            map = new MapmyIndia.Map(document.getElementById('map'), {
+                center: [28.5507160000001, 77.2689280000001]
+            });
+            var path1 = [{
+                lat: 28.61883120929714,
+                lng: 77.2423538954946
+            }, {
+                lat: 28.618671102377036,
+                lng: 77.2427508624296
+            }, {
+                lat: 28.618463904824424,
+                lng: 77.2430834563466
+            }, {
+                lat: 28.618266124960698,
+                lng: 77.24342677910056
+            }, {
+                lat: 28.61797416352853,
+                lng: 77.24396322090348
+            }, {
+                lat: 28.61782347344017,
+                lng: 77.24416706878947
+            }, {
+                lat: 28.617616274215052,
+                lng: 77.24457476455893
+            }, {
+                lat: 28.617409074580024,
+                lng: 77.24490735847718
+            }, {
+                lat: 28.6172772200555,
+                lng: 77.24522922355845
+            }, {
+                lat: 28.61667445440203,
+                lng: 77.24485371429739
+            }, {
+                lat: 28.61604343040156,
+                lng: 77.24441383201832
+            }, {
+                lat: 28.616297724110893,
+                lng: 77.24380228836282
+            }, {
+                lat: 28.616580271955968,
+                lng: 77.24340532142912
+            }, {
+                lat: 28.616523762447542,
+                lng: 77.24287960846186
+            }, {
+                lat: 28.616269469285555,
+                lng: 77.24267576057719
+            }, {
+                lat: 28.61642957986632,
+                lng: 77.24215004760987
+            }, {
+                lat: 28.616655617919136,
+                lng: 77.24188182670838
+            }, {
+                lat: 28.616900491926728,
+                lng: 77.24144194442937
+            }, {
+                lat: 28.617041765133905,
+                lng: 77.24118445236479
+            }, {
+                lat: 28.61742791092773,
+                lng: 77.24125955421727
+            }, {
+                lat: 28.617889400380662,
+                lng: 77.2416457923153
+            }, {
+                lat: 28.618360305894782,
+                lng: 77.24198911506926
+            }, {
+                lat: 28.618360305894782,
+                lng: 77.24198911506926
+            }, {
+                lat: 28.61883120929714,
+                lng: 77.2423538954946
+            }];
+            var path2 = [{
+                lng: 77.2424233599483,
+                lat: 28.61553919
+            }, {
+                lng: 77.24474738461362,
+                lat: 28.61425636
+            }, {
+                lng: 77.24399031597278,
+                lat: 28.61345265
+            }, {
+                lng: 77.24187756627629,
+                lat: 28.61493642
+            }];
+
+            map.on('load', function() {
+                // MapmyIndia.multiBounds(true);
+                mapmyindia_polygon = new MapmyIndia.Polygon({
+                    map: map,
+                    paths: path1,
+                    fillColor: "blue",
+                    lineGap: 10,
+                    strokeOpacity: 1.0,
+                    strokeWeight: 9,
+                    html: "<div style='background:#fff;border-radius:5px;line-height:15px;padding:0 2px'>Auto Expo Parking</div>",
+                    popupHtml: 'polygon'
+                });
+                mapmyindia_polygon.addListener('click', function(e, layer) {
+                    alert(1);
+                });
+                mapmyindia_polygon1 = new MapmyIndia.Polyline({
+                    map: map,
+                    paths: path2,
+                    fillColor: "red",
+                    lineGap: 10,
+                    strokeOpacity: 1.0,
+                    strokeWeight: 9,
+                    html: "<div style='background:#fff;border-radius:5px;line-height:15px;padding:0 2px'>Auto Expo</div>",
+                    popupHtml: 'polygon2'
+                });
+                // MapmyIndia.multiBounds(false);
+            })
+        }
+    </script>
+</body>
+
+</html>

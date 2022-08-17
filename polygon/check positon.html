@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <title>Check Position In Polygon</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        var map, poly, mark;
+
+        function initMap1() {
+            map = new mappls.Map('map', {
+                center: [28.61, 77.23],
+                zoomControl: true,
+                location: true
+            });
+            map.addListener('load', function() {
+                var pts = [{
+                    lat: 29.218021299904706,
+                    lng: 76.82642543790467
+                }, {
+                    lat: 29.531130256948174,
+                    lng: 77.6832293345214
+                }, {
+                    lat: 29.266254550408533,
+                    lng: 78.84406042026126
+                }, {
+                    lat: 28.807123725237517,
+                    lng: 80.36419636587112
+                }, {
+                    lat: 27.980462962586188,
+                    lng: 79.75614198762679
+                }, {
+                    lat: 27.368543382867884,
+                    lng: 80.61294588424352
+                }, {
+                    lat: 26.80257167123321,
+                    lng: 80.03253034137452
+                }, {
+                    lat: 26.876555928133286,
+                    lng: 78.92697692638541
+                }, {
+                    lat: 26.258550770601545,
+                    lng: 79.00989343250956
+                }, {
+                    lat: 26.72853911997632,
+                    lng: 76.9093419440307
+                }, {
+                    lat: 28.004868266263415,
+                    lng: 75.36156716304546
+                }, {
+                    lat: 28.66171186165053,
+                    lng: 75.69323318754206
+                }];
+                poly = new mappls.Polygon({
+                    map: map,
+                    paths: pts,
+                    fillColor: "blue",
+                    fitbounds: true
+                });
+                mark = new mappls.Marker({
+                    map: map,
+                    position: {
+                        lat: 28.01150505415592,
+                        lng: 78.48105868544405
+                    },
+                    icon_url: 'https://apis.mapmyindia.com/map_v3/1.png',
+                    draggable: true
+                });
+                setTimeout(() => {
+                    check(mark.getPosition());
+                }, 2500);
+                mark.addListener('dragend', function(e) {
+                    check(mark.getPosition());
+                })
+            });
+
+            function check(pos) {
+                if (poly.check_position(pos)) {
+                    alert("Marker falls in polygon");
+                } else {
+                    alert("Marker does't falls in polygon");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

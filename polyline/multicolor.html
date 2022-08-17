@@ -1,0 +1,134 @@
+<html>
+
+<head>
+    <title>Multi Colored Polyline</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        var map, Polyline;
+        var geojson = {
+            "type": "FeatureCollection",
+            "features": [{
+                    "type": "Feature",
+                    "properties": {
+                        "color": "blue"
+                    },
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [28.55101, 77.26872],
+                            [28.55099, 77.26849],
+                            [28.55097, 77.26831],
+                            [28.55093, 77.26794],
+                            [28.55089, 77.2676],
+                            [28.55123, 77.26756]
+                        ]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "color": "#F7455D"
+                    },
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [28.55123, 77.26756],
+                            [28.55145, 77.26758],
+                            [28.55168, 77.26758],
+                            [28.55168, 77.26758],
+                            [28.55168, 77.26758],
+                            [28.55172, 77.26759]
+                        ]
+                    }
+
+                },
+                //{
+                //     "type": "Feature",
+                //     "properties": {
+                //         "color": "yellow"
+                //     },
+                //     "geometry": {
+                //         "type": "LineString",
+                //         "coordinates": [
+                //             [27.55101, 77.26872],
+                //             [27.55099, 77.26849],
+                //             [27.55097, 77.26831],
+                //             [27.55093, 77.26794],
+                //             [27.55089, 77.2676],
+                //             [27.55123, 77.26756]
+                //         ]
+                //     }
+            ]
+        }
+
+
+        function initMap1() {
+            map = new mappls.Map('map', {
+                center: [28.544, 77.5454],
+                zoomControl: true,
+                location: true
+            });
+            map.addListener('load', function() {
+                polyline = new mappls.Polyline({
+                    map: map,
+                    zIndex: 1,
+                    path: geojson,
+                    strokeOpacity: 1.0,
+                    strokeWeight: 5,
+                    dasharray: [10, 5],
+                    fitbounds: true, // or false
+                    lineGap: 10,
+                    editable: true,
+                    fitboundOptions: {
+                        padding: 120,
+                        duration: 1000
+                    },
+                    //=== car moving ===
+                    animate: {
+                        speed: 9,
+                        icon_width: 20,
+                        icon_height: 50,
+                        icon_url: "https://www.mapmyindia.com/api/advanced-maps/doc/sample/map_sdk/car.png",
+                        repeat: true,
+                    },
+                    popupHtml: "h! SOURABH",
+                    popupOptions: {
+                        offset: {
+                            'bottom': [0, -20]
+                        }
+                    }
+                });
+
+
+                //==== Polyline Animation Methods ==== 
+                // polyline.animate('stop')
+                // polyline.animate('resume')
+
+
+                //==== remove the polyline ==== 
+                // mappls.remove({
+                //     map: map,
+                //     layer: polyline
+                // });
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>Single Marker</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        var map, Marker1;
+
+        function initMap1() {
+            map = new mappls.Map('map', {
+                center: [28.61, 77.23],
+                zoom: 1,
+                location: true
+            });
+            Marker1 = new mappls.Marker({
+                map: map,
+                position: {
+                    "lat": 48.1541021946205,
+                    "lng": 67.3701772584765
+                },
+                // draggable: true,
+                // offset: [48.1541021946205, 67.3701772584765],
+                fitbounds: true,
+                fitboundOptions: {
+                    padding: 0,
+                    duration: 10000 //time to take to zoom at marker level
+                },
+                icon: 'https://apis.mapmyindia.com/map_v3/1.png',
+                // width: 125,
+                // height: 25,
+                // html: '<div style="red-space:nowrap;font-size:10px;padding left:15px;color:#000">Hello World</div>',
+                // popupHtml: 'Hi sourabh',
+                popupHtml: "<style>::-webkit-scrollbar {width: 10px;} </style><div style=\"max-height:150px;min-width:200px;overflow-y: scroll;\"><h2 style=\"font: bold 16px arial helvetica\">Custom Popup</h2>" +
+                    "<p style=\"font: italic 14px/20px times\">Building looks like:</p>" +
+                    "<img style=\"width: 200px;height: 100px;\" src=\"https://www.ft.com/__origami/service/image/v2/images/raw/https%253A%252F%252Fs3-ap-northeast-1.amazonaws.com%252Fpsh-ex-ftnikkei-3937bb4%252Fimages%252F0%252F1%252F5%252F2%252F2762510-8-eng-GB%252F20170519T-CE-Info-Systems.jpg?width=700&fit=cover&gravity=faces&dpr=2&quality=medium&source=nar-cms\">" +
+                    "<p>MapmyIndia Head Office, Delhi</p>" +
+                    "<a href=\"https://www.mappls.com\">Mappls Maps</a></div>",
+                popupOptions: { //position of popup over marker
+                    offset: {
+                        'bottom': [160, -20]
+                    }
+                },
+                popupOptions: true, //or false 
+                // clusters: true,
+                // clustersOptions: {
+                //     "color": "blue",
+                //     "bgcolor": "red"
+                // },
+                // cType: 1
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+</html>
+
+</html>

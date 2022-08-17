@@ -1,0 +1,259 @@
+<html>
+
+<head>
+    <title>Polyline</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        var map, polyline;
+
+        function initMap1() {
+            map = new mappls.Map('map', {
+                center: [28.544, 77.5454],
+                zoomControl: true,
+                location: true
+            });
+            map.addListener('load', function() {
+                var pts = [{
+                    lat: 28.554,
+                    lng: 77.26747
+                }, {
+                    lat: 28.55406,
+                    lng: 77.26748
+                }, {
+                    lat: 28.5541,
+                    lng: 77.26749
+                }, {
+                    lat: 28.55414,
+                    lng: 77.26752
+                }, {
+                    lat: 28.55418,
+                    lng: 77.26755
+                }, {
+                    lat: 28.55427,
+                    lng: 77.26764
+                }, {
+                    lat: 28.55432,
+                    lng: 77.26769
+                }, {
+                    lat: 28.55437,
+                    lng: 77.26773
+                }, {
+                    lat: 28.55443,
+                    lng: 77.26773
+                }, {
+                    lat: 28.55454,
+                    lng: 77.26775
+                }, {
+                    lat: 28.5546,
+                    lng: 77.26773
+                }, {
+                    lat: 28.55505,
+                    lng: 77.26732
+                }, {
+                    lat: 28.55511,
+                    lng: 77.26727
+                }, {
+                    lat: 28.55545,
+                    lng: 77.26705
+                }, {
+                    lat: 28.55527,
+                    lng: 77.26668
+                }, {
+                    lat: 28.55509,
+                    lng: 77.26635
+                }, {
+                    lat: 28.55496,
+                    lng: 77.26611
+                }, {
+                    lat: 28.55478,
+                    lng: 77.26582
+                }, {
+                    lat: 28.55462,
+                    lng: 77.26559
+                }, {
+                    lat: 28.55453,
+                    lng: 77.2655
+                }, {
+                    lat: 28.55437,
+                    lng: 77.26539
+                }, {
+                    lat: 28.55413,
+                    lng: 77.26525
+                }, {
+                    lat: 28.5539,
+                    lng: 77.26514
+                }, {
+                    lat: 28.55313,
+                    lng: 77.26481
+                }, {
+                    lat: 28.55292,
+                    lng: 77.26472
+                }, {
+                    lat: 28.5527,
+                    lng: 77.26463
+                }, {
+                    lat: 28.55241,
+                    lng: 77.26452
+                }, {
+                    lat: 28.5521,
+                    lng: 77.26441
+                }, {
+                    lat: 28.55188,
+                    lng: 77.26432
+                }, {
+                    lat: 28.55154,
+                    lng: 77.2642
+                }, {
+                    lat: 28.55071,
+                    lng: 77.26388
+                }, {
+                    lat: 28.55042,
+                    lng: 77.26374
+                }, {
+                    lat: 28.55024,
+                    lng: 77.26364
+                }, {
+                    lat: 28.55,
+                    lng: 77.26345
+                }, {
+                    lat: 28.54984,
+                    lng: 77.26331
+                }, {
+                    lat: 28.54978,
+                    lng: 77.26324
+                }, {
+                    lat: 28.54963,
+                    lng: 77.26305
+                }, {
+                    lat: 28.54955,
+                    lng: 77.26293
+                }, {
+                    lat: 28.54951,
+                    lng: 77.26287
+                }, {
+                    lat: 28.54943,
+                    lng: 77.26269
+                }, {
+                    lat: 28.54936,
+                    lng: 77.26253
+                }, {
+                    lat: 28.54932,
+                    lng: 77.2624
+                }, {
+                    lat: 28.5493,
+                    lng: 77.26232
+                }, {
+                    lat: 28.54928,
+                    lng: 77.26226
+                }, {
+                    lat: 28.54915,
+                    lng: 77.26172
+                }, {
+                    lat: 28.54883,
+                    lng: 77.26038
+                }, {
+                    lat: 28.54877,
+                    lng: 77.26011
+                }, {
+                    lat: 28.54875,
+                    lng: 77.25953
+                }, {
+                    lat: 28.55108,
+                    lng: 77.26913
+                }, {
+                    lat: 28.55106,
+                    lng: 77.26906
+                }, {
+                    lat: 28.55105,
+                    lng: 77.26897
+                }, {
+                    lat: 28.55101,
+                    lng: 77.26872
+                }, {
+                    lat: 28.55099,
+                    lng: 77.26849
+                }, {
+                    lat: 28.55097,
+                    lng: 77.26831
+                }, {
+                    lat: 28.55093,
+                    lng: 77.26794
+                }, {
+                    lat: 28.55089,
+                    lng: 77.2676
+                }, {
+                    lat: 28.55123,
+                    lng: 77.26756
+                }, {
+                    lat: 28.55145,
+                    lng: 77.26758
+                }, {
+                    lat: 28.55168,
+                    lng: 77.26758
+                }, {
+                    lat: 28.55175,
+                    lng: 77.26759
+                }, {
+                    lat: 28.55177,
+                    lng: 77.26755
+                }, {
+                    lat: 28.55179,
+                    lng: 77.26753
+                }];
+
+
+
+                polyline = new mappls.Polyline({
+                    map: map,
+                    paths: pts,
+                    strokeColor: 'red',
+                    strokeOpacity: 0.9,
+                    strokeWeight: 5,
+                    fitbounds: true,
+                    fitboundOptions: {
+                        padding: 120,
+                        duration: 2000
+                    },
+                    lineGap: 20,
+                    // lineCap: {
+                    //     padding: 120,
+                    //     duration: 1000
+                    // },
+                    popupHtml: "H! sourabh",
+                    popupOptions: {
+                        offset: {
+                            'bottom': [120, -120]
+                        }
+                    },
+                    zIndex: -1,
+                    visibility: false,
+                    editable: true,
+                    gradient: [0, 'pink', 0.1, 'black', 0.3, 'cyan', 0.5, 'lime', 0.7, 'yellow', 1, 'red'],
+                    animate: {
+                        path: true,
+                        speed: 5
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

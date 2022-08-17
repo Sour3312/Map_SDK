@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Single Marker</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        var map, Marker1;
+
+        function initMap1() {
+            map = new mappls.Map('map', {
+                center: [28.61, 77.23],
+                zoom: 1,
+                location: true
+            });
+            map.addListener('click', function() {
+                marker = new mappls.Marker({
+                        map: map,
+                        position: {
+                            "lat": 28.1541021946205,
+                            "lng": 67.3701772584765
+                        },
+                    }),
+                    alert(marker.getPosition(marker));
+                console.log(marker.getPosition(marker));
+
+
+            })
+
+            marker.setZIndex(2);
+            marker.setPopup("html", {
+                openPopup: true
+            });
+            marker.setPosition({
+                lat: 98.454,
+                lng: 37.5454
+            });
+            marker.setDraggable(true);
+            marker.setIcon("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS06GG6U1z8vUT-Xt6lDNBlK8OG0NYPsYe2sg&usqp=CAU");
+        }
+        mappls.remove({
+            map: map,
+            layer: marker
+        });
+    </script>
+</body>
+
+</html>
+
+</html>
+
+</html>
+
+</html>

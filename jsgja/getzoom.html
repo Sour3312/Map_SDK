@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Get Map Zoom</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        var map;
+
+        function initMap1() {
+            map = new mappls.Map('map', {
+                zoom: 9
+            });
+            map.addListener('click', function() {
+                alert(`Zoom level : ${map.getZoom()}`)
+                console.log(`Zoom level : ${map.getZoom()}`)
+                divId.innerHTML = `
+                                Get Map Zoom: $ {
+                                    map.getZoom()
+                                }
+                                `;
+            });
+        }
+    </script>
+</body>
+
+</html>

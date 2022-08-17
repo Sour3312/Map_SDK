@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Marker with Custom Popup</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script>
+        function initMap1() {
+            map = new mappls.Map('map', {
+                center: [28.44, 77.26],
+                zoomControl: true,
+                location: true,
+            });
+            Marker1 = new mappls.Marker({
+                map: map,
+                position: {
+                    "lat": 28.55,
+                    "lng": 77.26
+                },
+                // fitbounds: true,
+                popupHtml: "<style>::-webkit-scrollbar {width: 10px;}</style><div style=\"max-height:200px;min-width:100px;overflow-y: scroll;\"><h2 style=\"font: bold 12px arial helvetica\">Custom Popup</h2>" +
+                    "<p style=\"font: italic 15px/20px times\">Building looks like:</p>" +
+                    "<img style=\"width: 200px;height: 200px;\" src=\"https://www.ft.com/__origami/service/image/v2/images/raw/https%253A%252F%252Fs3-ap-northeast-1.amazonaws.com%252Fpsh-ex-ftnikkei-3937bb4%252Fimages%252F0%252F1%252F5%252F2%252F2762510-8-eng-GB%252F20170519T-CE-Info-Systems.jpg?width=700&fit=cover&gravity=faces&dpr=2&quality=medium&source=nar-cms\">" +
+                    "<p>MapmyIndia Head Office, Delhi</p>" +
+                    "<p>MapmyIndia Branch Office, Ranchi</p>" +
+                    "<a href=\"https://www.mappls.com\">Mappls Maps</a></div>",
+            });
+        }
+    </script>
+</body>
+
+</html>

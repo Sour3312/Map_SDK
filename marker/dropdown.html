@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>Marker Dropdown</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/a44f5fb6eda6cd07e15e26c82b7bb3bf/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <style>
+        .dropdown {
+            color: red;
+            position: relative;
+            animation-name: example;
+            animation-duration: 7s;
+        }
+        
+        @keyframes example {
+            0% {
+                left: 0px;
+                bottom: 1000px;
+            }
+            100% {
+                left: 0px;
+                bottom: 0px;
+            }
+        }
+    </style>
+    <script>
+        var map, marker;
+
+        function initMap1() {
+            map = new mappls.Map('map', {
+                center: [28.61, 77.23],
+                zoomControl: true,
+                location: true,
+            });
+            map.addListener('load', function() {
+                marker = new mappls.Marker({
+                    map: map,
+                    position: {
+                        "lat": 28.519467,
+                        "lng": 77.223150
+                    },
+                    fitbounds: true,
+                    draggable: true,
+                    popupHtml: "moving...",
+                    html: '<div><img class="dropdown" src="https://apis.mapmyindia.com/map_v3/1.png"></div>'
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
